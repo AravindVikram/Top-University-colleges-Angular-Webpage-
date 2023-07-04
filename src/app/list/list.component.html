@@ -1,0 +1,89 @@
+<div class="container-fluid" id="img">
+    <br><h1 class="text-center text-white" style="font-weight: 700 ;">Top Universities & Colleges</h1>
+    <p class='text-center text-white'>Unveiling the Prestigious & Best Institutions where you can kickstart your Career and Passion</p>
+</div>
+<br><br>
+<div class="container" id="cards-div">
+  <h3 style="font-weight: 700 ; display: inline;" class="">Explore the Best Universities and Colleges</h3> <span><i class="fa fa-arrow-circle-down" style="font-size:25px; padding-left: 3rem;"></i></span>
+  <br>
+ 
+  <br><div class="form-inline float-right">
+    <input class="form-control" type="text" [(ngModel)]="searchKeyword" placeholder="Enter keyword..." >&nbsp;
+    <button class="btn btn-primary" (click)="onSearch()">Search</button>&nbsp;&nbsp;
+    <button class="btn btn-sm text-danger" (click)="Clear()">Clear</button>
+  </div> 
+
+</div>
+
+  <br><br><br>
+
+  <div class="container-fluid">
+    <br><br><table class="table table-borderd table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>University <a  id="a"  routerLink=""><span class="fa fa-sort" (click)="sortTable('name')"></span></a></th>
+                <th>Country <a id="a"  routerLink=""><span class="fa fa-sort" (click)="sortTable('country')"></span></a></th>
+                <th>AlphaCode <a id="a"  routerLink=""><span class="fa fa-sort" (click)="sortTable('alpha_two_code')"></span></a></th>
+                <th>Province <a id="a"  routerLink=""><span class="fa fa-sort" (click)="sortTable('')"></span></a></th>
+                <th>Domain <a id="a" routerLink=""><span class="fa fa-sort" (click)="sortTable('domains')"></span></a></th>
+                <th>Webpage <a id="a" routerLink=""><span class="fa fa-sort" (click)="sortTable('web_pages')"></span></a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of Data | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+                <td  >{{x.name}} </td>
+                <td id="column">{{x.country}}</td>
+                <td  id="column">{{x.alpha_two_code}} </td>
+                <td id="column">{{x['state-province']| nullCheck }}</td>
+                <td id="column">{{x.domains}} </td>
+                <td id="column" ><a href="{{x.web_pages}}" target="_blank">{{x.web_pages}} </a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <div class="text-center">
+      <br><br><pagination-controls (pageChange)="onPageChange($event)" [maxSize]="8" [directionLinks]="true" [autoHide]="true"></pagination-controls>
+   </div>
+
+
+
+
+  <br><br><br>
+<!-- Footer -->
+<div class="container-fluid bg-dark">
+
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12 py-5">
+        <div class="mb-5 flex-center">
+          <a class="fb-ic">
+            <i class="fab fa-facebook-f fa-lg text-white mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+        
+          <a class="tw-ic">
+            <i class="fab fa-twitter fa-lg text-white mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+        
+          <a class="gplus-ic">
+            <i class="fab fa-google-plus-g fa-lg text-white mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+        
+          <a class="li-ic">
+            <i class="fab fa-linkedin-in fa-lg text-white mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+        
+          <a class="ins-ic">
+            <i class="fab fa-instagram fa-lg text-white mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+        
+          <a class="pin-ic">
+            <i class="fab fa-pinterest fa-lg text-white fa-2x"> </i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-copyright text-center py-3 text-white">© 2023 Copyright. TopUniversity </div>
+
+</div>
